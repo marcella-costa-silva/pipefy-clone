@@ -4,6 +4,13 @@ import { Container } from './styles'
 
 export default function List() {
   return (
-    <Container />
+    <Container>
+      <header>
+        <h2>Tarefas</h2>
+        <button type='button'>
+
+        </button>
+      </header>
+    </Container>
   )
 }
