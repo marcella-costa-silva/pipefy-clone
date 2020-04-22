@@ -26,14 +26,14 @@ export default function Card({ data, index, listIndex }) {
     accept: 'CARD',
     hover(item, monitor) {
       const draggedListIndex = item.listIndex
-      // const targetListIndex = listIndex
+      const targetListIndex = listIndex
 
       const draggedIndex = item.index // Card que está sendo arrastado.
       const targetIndex = index // Card que está por baixo.
 
       // console.log(draggedIndex, targetIndex)
 
-      if (draggedIndex === targetIndex) return
+      if (draggedIndex === targetIndex && draggedListIndex === targetListIndex) return
       
       const targetSize = ref.current.getBoundingClientRect() // Tamanho do elemento.
       const targetCenter = (targetSize.bottom - targetSize.top) / 2
@@ -49,9 +49,10 @@ export default function Card({ data, index, listIndex }) {
 
       console.log('Passou da metade do card')
 
-      move(draggedListIndex, draggedIndex, targetIndex) // De onde para onde.
+      move(draggedListIndex, targetListIndex, draggedIndex, targetIndex) // De onde para onde.
 
       item.index = targetIndex
+      item.listIndex = targetListIndex
     }
   })
 
